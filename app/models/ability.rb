@@ -63,6 +63,7 @@ class Ability
         can :show, user do |u|  
           u.id == user.id
         end
+
         #can only look at employees associated with manager's store
         can :show, Employee do |this_employee|
           my_emp_store = user.assignments.map(&:store_id)
@@ -76,6 +77,8 @@ class Ability
         # can only update employees associated with manager's store
         can :update, Employee do |this_employee|
           my_emp_store = user.assignments.map(&:store_id)
+
+         
           my_emp_store.include? this_employee.current_assignment.store_id
         end
 

@@ -20,8 +20,15 @@
             <td><%= number_to_phone store.phone %></td>
 
             <td class="align_center">
-              <%= link_to edit_store_path(store) do %>
-                <i class="material-icons">edit</i>
+
+              <% if can? :edit, :store %>
+                <%= link_to edit_store_path(store) do %>
+                  <i class="material-icons">edit</i>
+              <% end %>
+
+
+
+             
               <% end %>
             </td>
           </tr>

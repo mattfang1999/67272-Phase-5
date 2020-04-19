@@ -21,6 +21,9 @@
 // @import "materialize";
 // @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
+//= require foundation
+$(function(){ $(document).foundation(); });
+
 // Flash fade
 $(function() {
   $('.alert-box').fadeIn('normal', function() {

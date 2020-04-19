@@ -1,5 +1,5 @@
 class AssignmentsController < ApplicationController
-  before_action :set_assignment, only: [:show, :edit, :terminate, :destroy]
+  before_action :set_assignment, only: [:show, :edit, :update, :terminate, :destroy]
 
   def index
     # for phase 3 only
@@ -21,6 +21,20 @@ class AssignmentsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+   def update
+    if @assignment.update_attributes(assignment_params)
+      redirect_to @assignment, notice: "Updated #{@assignment.employee.proper_name}'s assignment."
+    else
+      render action: 'edit'
+    end
+  end
+
+
+  
+
   def terminate
     if @assignment.terminate
       redirect_to assignments_path, notice: "Assignment for #{@assignment.employee.proper_name} terminated."
@@ -40,7 +54,7 @@ class AssignmentsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def assignment_params
-    params.require(:assignment).permit(:store_id, :employee_id, :start_date)
+    params.require(:assignment).permit(:store_id, :employee_id, :start_date, :pay_grade_id,)
   end
 
 end

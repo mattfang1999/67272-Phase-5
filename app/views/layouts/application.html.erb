@@ -8,13 +8,25 @@
     <%# javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
     <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Bitter|Josefin+Sans|Nunito|Alfa+Slab+One" %>
+     <link rel="stylesheet" href="css/foundation-icons.css" />
+
   </head>
 
   <body>
+
+
     <header>
     <!-- Partials for the topbar and navigation -->
     <%= render :partial => "partials/topbar" %>
-    <%= render :partial => "partials/nav" %>
+    
+     <% if logged_in? %>
+        <%= render :partial => "partials/nav" %>
+    <% else %>
+        <%= render :partial => "partials/nav_guest" %>
+      <% end %>
+
+
+    
     </header>
     <main>
     <div class="container">
