@@ -1,13 +1,30 @@
-<h5>A&M Creamery Home</h5>
+<%if current_user.nil?%>
 
-<p>This is our very creative home page.</p>
-<p>Now go away.</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>What are you still doing here?  Can't you follow instructions?</p>
+	<%= render partial: 'partials/guest_dashboard' %>
+<%elsif current_user.role?(:admin)%>
+	<%= render partial: 'employees/tabbed_index_for_admin_dashboard' %>	
+<%elsif current_user.role?(:manager)%>
+	<%= render partial: 'employees/tabbed_index_for_manager_dashboard' %>
+<%else current_user.role?(:employee)%>
+	<%= render partial: 'employees/employee_dashboard' %>
+<%end%>
+
+
+
+
+  		
+
+
+
+
+
+
+
+
+
+
+
 	
 <%# render :partial => 'general_home' %>
+
+

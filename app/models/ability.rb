@@ -37,6 +37,7 @@ class Ability
         #Can manage shifts and jobs
         can :manage, Shift
         can :manage, ShiftJob
+        can :manage, Payroll
 
         #STORES
         #can read the list of stores
@@ -107,6 +108,8 @@ class Ability
         can :update, user do |u|
           u.id == user.id
         end
+
+        
 
 
       #Guests can only read stores 

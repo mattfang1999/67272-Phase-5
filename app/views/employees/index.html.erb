@@ -1,4 +1,13 @@
-<%= render partial: 'partials/index_structure', locals: {model_name: 'employee', 
-                                                         primary: 'active_lists', 
-                                                         secondary: 'inactive_employees',
-                                                         sidebar: nil} %>
+<% if current_user.role?(:admin) || current_user.role?(:manager) %>
+	<%= render partial: 'tabbed_index' %>
+	
+          
+<% else %>
+	<%= render partial: 'employee_dashboard' %>
+<% end %>
+
+
+
+
+
+                                                       

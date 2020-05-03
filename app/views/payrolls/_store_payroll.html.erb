@@ -1,0 +1,55 @@
+
+
+<div class="card">
+  <div class="card-content">
+    
+
+    <% if payrolls.blank? %>
+      <p>There are no employees at your store.</p>
+    <% else %>
+      <h3><%=@store.name%>'s Payroll  </h5>
+      <h5>From <%=@date_range.start_date.strftime("%m/%d/%Y")%> - <%=@date_range.end_date.strftime("%m/%d/%Y")%></h5>
+      <table class="striped highlight">
+        <thead>
+          <tr>
+            <th>Employee Name</th>
+            <th>Total Pay Earned</th>
+            <th>Pay Rate</th>
+            <th>Hours</th>
+            <th>Pay Grade</th>
+                       
+          </tr>
+        </thead>
+        <tbody>
+          <% payrolls.each do |pr| %>
+            <tr>
+            
+              <td><%= pr.employee_name%></td>
+              <td>$<%= pr.pay_earned%></td>
+              <td>$<%= pr.pay_rate%></td>
+              <td><%= pr.hours%></td>
+              <td><%= pr.pay_grade%></td>
+              
+
+            </tr>
+     
+            
+        <% end %>
+        </tbody>
+      </table>
+      <p class="supertiny"></p>
+      <br />
+      
+      <%= will_paginate payrolls, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+      
+      <br />
+   
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('#dates').hide();
+</script>
+
+

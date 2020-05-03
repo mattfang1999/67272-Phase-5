@@ -1,0 +1,36 @@
+<% if @pending_shifts.blank? %>
+      <p>There are no pending shifts at this time.</p>
+<% else %>
+
+  <div class="card">
+    <div class="card-content">
+      <h5>Pending Shifts This Assignment</h5>
+
+      <table class="striped highlight">
+        <thead>
+          <th>Shift ID</th>
+          <th>Date</th>
+          <th>Duration</th>
+        </thead>
+        <% @pending_shifts.each do |shift| %>
+          <tr >
+            <td><%=shift.id%></td>
+            <td><%= shift.date.strftime("%-m/%-d/%y")%></td>
+            <td><%=shift.duration%> hours</td>
+            
+
+            
+          </tr>
+          
+        <% end %>
+      </table>
+      <p>These shifts are +/- one week's time.</p>
+      <p class="supertiny"></p>
+      <br />
+    </div>
+    
+  </div>
+
+
+<% end %>
+

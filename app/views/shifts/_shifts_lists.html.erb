@@ -1,0 +1,139 @@
+<div class="card">
+  <div class="card-content">
+    <h5><%= state.capitalize %> Shifts</h5>
+
+    <% if shifts.blank? %>
+      <p>There are no <%= state.downcase %> shifts at this time.</p>
+    <% else %>
+
+      <table class="striped highlight">
+        <thead>
+          <tr>
+            <th>Shift ID</th>
+            <th>Assigned At</th>
+            <th>Employee Name</th>
+            <th>Date</th>
+
+            <% if is_past == false%>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <%end%>
+          
+                       
+          </tr>
+        </thead>
+        <tbody>
+          <% shifts.each do |shift| %>
+            <tr>
+
+              <td><%= link_to shift.id, shift_path(shift)%></td>
+              <td class='hyperlink'><%= link_to shift.assignment.store.name, store_path(shift.assignment.store)%></td>
+              <td class='hyperlink'><%= link_to shift.employee.name, employee_path(shift.assignment.employee) %></td>
+
+
+              <td><%= shift.date.strftime("%-m/%-d/%y")%></td>
+
+              <% if is_past == false%>
+              <td><%=shift.start_time.strftime("%H:%M")%></td>
+              <td><%=shift.end_time.strftime('%H:%M')%></td>
+              <%end%>
+                
+
+
+
+               <% if current_user.role?(:admin) || current_user.role?(:manager) %>
+                  <td>
+                    <%= link_to(edit_shift_path(shift), class: 'btn-small cyan darken-4') do %>
+                      &nbsp;Edit&nbsp;
+                    <% end %>
+                  </td>
+              <% end %>
+
+
+               <% if current_user.role?(:admin) || current_user.role?(:manager) %>
+                  <td>
+              <%= link_to(shift_path(shift), method: :delete, data: { confirm: 'Are you sure you wish to delete this information?' }, class: 'btn-small red darken-4') do %>
+                &nbsp;Delete&nbsp;
+
+              <% end %>
+              </td>
+
+              
+
+           <% end %>
+
+                 
+
+
+            <% if current_user.role?(:admin) || current_user.role?(:manager) %>
+
+               <% if is_past %>
+                  <td>
+                      
+                      <%= link_to(new_shift_job_path, class: 'btn-small blue darken-1') do %>
+                        &nbsp;Add Job to Shift&nbsp;
+                  <% end %>
+
+                  </td>
+                 <td>
+                    <ul class="collapsible">
+                      <li>
+                        <div class="collapsible-header"><i class="material-icons">add</i>View Jobs with this Shift</div>
+                        <div class="collapsible-body">
+                          
+                                <table>
+                                  <thead>
+                                  </thead>
+
+                                  <tbody>
+                                    
+                                      <% ShiftJob.for_shift(shift).each do |shift_job| %>
+                                      <tr>
+                                          <td><%=shift_job.job.name%></td>
+                                          <td>
+                                              <%= link_to(shift_job_path(shift_job), method: :delete, data: { confirm: 'Are you sure you wish to delete this information?' }, class: 'btn-small red darken-4') do %>
+                                                &nbsp;Delete&nbsp;
+
+                                              <% end %>
+                                          </td>
+                                      <%end%>
+                                      <tr>
+                                    
+                                  </tbody>
+                                </table>
+                        </div>
+                      </li>
+                      
+                    </ul>
+                 </td>
+                <%end%>
+                  
+
+
+            <%end%>
+
+
+
+
+          
+
+               
+            </tr>
+
+           
+
+            
+        <% end %>
+        </tbody>
+      </table>
+      <p class="supertiny"></p>
+      <br />
+      
+      <%= will_paginate shifts, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+      <br />
+   
+    <% end %>
+  </div>
+</div>
+
+

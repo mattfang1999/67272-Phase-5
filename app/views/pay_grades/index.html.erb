@@ -1,0 +1,92 @@
+<div class="card">
+  <div class="card-content">
+    <h5>All Pay Grades</h5>
+
+    <% if @pay_grades.empty? %>
+      <p>There are no paygrades at this time.</p>
+    <% else %>
+
+      <table class="striped highlight">
+        <thead>
+          <tr>
+            <th>Level</th>
+            <th>Status</th>
+            <th>View Pay Grade Rates</th>
+            <th>Add a Pay Grade Rate</th>
+            <th>Edit Pay Grade Level</th>
+            
+                       
+          </tr>
+        </thead>
+        <tbody>
+          <% @pay_grades.each do |pg| %>
+            <tr>
+              <td><%=pg.level%></td>
+
+              	<%if pg.active == true %>
+              		<td>Active</td>
+              <%else %>
+              		<td>Inactive</td>
+              <%end %>
+              
+              <td>		 
+
+                      <ul class="collapsible">
+                        <li>
+                          <div class="collapsible-header">View</div>
+                          <div class="collapsible-body">
+                                  <%PayGradeRate.for_pay_grade(pg).each do |pgr| %>
+                                      Rate <%=pgr.id%>: $<%=pgr.rate%> <br>
+                                  <%end%>
+                              
+                          </div>
+                        </li>
+                        
+                      </ul>
+    
+              </td>
+
+              
+
+
+                <% if current_user.role?(:admin)%>
+                  <td>
+                      
+                      <%= link_to(new_pay_grade_rate_path, class: 'btn-small green darken-1') do %>
+                        &nbsp;Add&nbsp;
+
+                  <% end %>
+                  </td>
+              <% end %>
+
+               <% if current_user.role?(:admin) %>
+                  <td>
+                    <%= link_to(edit_pay_grade_path(pg), class: 'btn-small cyan darken-4') do %>
+                      &nbsp;Edit&nbsp;
+                    <% end %>
+                  </td>
+              <% end %>
+
+
+          
+
+               
+            </tr>
+
+           
+
+            
+        <% end %>
+        </tbody>
+      </table>
+      <p class="supertiny"></p>
+      <br />
+      
+      <%= will_paginate @pay_grades, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+      <br />
+
+      
+   
+    <% end %>
+  </div>
+</div>

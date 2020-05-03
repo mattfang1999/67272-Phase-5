@@ -1,0 +1,30 @@
+<div class="card">
+  <div class="card-content">
+    <h5>Upcoming Shifts Within 7 Days</h5>
+    <% if @upcoming_shifts.nil? %>
+      <p>There are no upcoming shifts within 7 days.</p>
+    <% else %>
+
+      <table class="striped highlight">
+        <thead>
+          <th>Shift ID </th>
+          <th>Employee Name</th>
+          <th>Date</th>
+          
+        </thead>
+        <% @upcoming_shifts.each do |shift| %>
+      
+          <tr>
+            <td><%=shift.id%></td>
+            <td class='hyperlink'><%=link_to shift.employee.name, employee_path(shift.assignment.employee)%></td>
+            <td><%=shift.date%></td>
+          </tr>
+        <% end %>
+      </table>
+      <p class="supertiny"></p>
+      <br />
+
+      <%= will_paginate @upcoming_shifts, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+    <% end %>
+  </div>
+</div>

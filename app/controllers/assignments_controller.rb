@@ -1,11 +1,27 @@
 class AssignmentsController < ApplicationController
   before_action :set_assignment, only: [:show, :edit, :update, :terminate, :destroy]
 
+  # def index
+  #   # for phase 3 only
+  #     @current_assignments = Assignment.current.chronological.paginate(page: params[:page]).per_page(10)
+  #     @past_assignments = Assignment.past.chronological.paginate(page: params[:page]).per_page(10)
+  # end
+
   def index
-    # for phase 3 only
-      @current_assignments = Assignment.current.chronological.paginate(page: params[:page]).per_page(10)
-      @past_assignments = Assignment.past.chronological.paginate(page: params[:page]).per_page(10)
+      if current_user.role? :admin
+        @current_assignments = Assignment.current.by_store.by_employee.chronological.paginate(page: params[:page]).per_page(10)
+        @past_assignments = Assignment.past.by_store.by_employee.chronological.paginate(page: params[:page]).per_page(10)
+      else current_user.role? :manager
+        @current_assignments = Assignment.current.for_store(current_user.current_assignment.store).by_employee.chronological.paginate(page: params[:page]).per_page(15)
+        @past_assignments = Assignment.past.for_store(current_user.current_assignment.store).by_employee.paginate(page: params[:page]).per_page(15)  
+      end
   end
+
+  def get_assignment_shifts
+      @completed_shifts = Shift.completed.by_store.by_employee.paginate(page: params[:page]).per_page(5)
+      @pending_shifts = Shift.pending.by_store.by_employee.paginate(page: params[:page]).per_page(5)
+  end
+
 
   def new
     @assignment = Assignment.new
@@ -21,6 +37,10 @@ class AssignmentsController < ApplicationController
     end
   end
 
+  def show
+    get_assignment_shifts
+  end
+
   def edit
   end
 
@@ -32,8 +52,6 @@ class AssignmentsController < ApplicationController
     end
   end
 
-
-  
 
   def terminate
     if @assignment.terminate
@@ -54,7 +72,7 @@ class AssignmentsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def assignment_params
-    params.require(:assignment).permit(:store_id, :employee_id, :start_date, :pay_grade_id,)
+    params.require(:assignment).permit(:store_id, :employee_id, :start_date, :pay_grade_id)
   end
 
 end

@@ -9,12 +9,14 @@
       <table class="striped highlight">
         <% @current_employees.each do |employee| %>
           <tr %>
-            <td><%= link_to employee.name, employee_path(employee) %></td>
+            <td class='hyperlink'><%= link_to employee.name, employee_path(employee) %></td>
           </tr>
         <% end %>
       </table>
       <p class="supertiny"></p>
       <br />
+
+      <%= will_paginate @current_employees, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
     <% end %>
   </div>
 </div>

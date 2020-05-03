@@ -1,0 +1,15 @@
+
+<%= f.input :rate, label_html: { class: 'active' } %>
+<%= f.input :start_date, label_html: { class: 'active' } %>
+<%= f.input :end_date, label_html: { class: 'active' } %>
+<%= f.input :pay_grade_id, collection: get_pay_grade_options, include_blank: true %>
+
+<!--  <div class="form-inputs">
+    <%= f.input :rate %>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.association :pay_grade %>
+  </div>
+ -->
+
+

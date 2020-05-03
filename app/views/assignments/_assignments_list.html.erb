@@ -8,45 +8,63 @@
 
       <table class="striped highlight">
         <thead>
+
           <th>Employee Name</th>
           <th>Store Name</th>
           <th>Dates</th>
-          <th>Options</th>
+         
         </thead>
         <% assignments.each do |assignment| %>
-          <tr %>
-            <td><%= link_to assignment.employee.name, employee_path(assignment.employee) %></td>
-            <td><%= link_to assignment.store.name, store_path(assignment.store) %></td>
+          <tr>
+            <td class='hyperlink'><%= link_to assignment.employee.name, employee_path(assignment.employee) %></td>
+            <td class='hyperlink'><%= link_to assignment.store.name, store_path(assignment.store) %></td>
             <td><%= assignment.start_date.strftime("%-m/%-d/%y") %> - <%= assignment.end_date.nil? ? 'Present' : assignment.end_date.strftime("%-m/%-d/%y") %></td>
-            <td>
 
-              <!-- Only admins can terminate and delete current assignments -->
-              <% if state.downcase == 'current' and current_user.role? :admin %>
-                <%= link_to(terminate_assignment_path(assignment), method: :patch) do %>
-                  <i class="material-icons">stop</i>
-                <% end %>
+            <td>   
+                      <%= link_to(assignment_path(assignment), class: 'btn-small black darken-1') do %>
+                        &nbsp;View Assignment &nbsp;
 
-                <%= link_to(assignment_path(assignment), method: :delete, data: { confirm: 'Are you sure you wish to delete this assignment?' }) do %>
-                  <i class="material-icons">delete</i>
-              <% end %>
+                  <% end %>
 
-              <% end %>
-            <!-- Only admins can edit assignments -->
-               <% if can? :edit, :assignment %>
-                 <%= link_to edit_assignment_path(assignment) do %>
-                    <i class="material-icons">edit</i>
-                <% end %>
-                &nbsp;&nbsp;&nbsp;&nbsp; 
-              <% end %>
 
-              <!-- Only admins can delete past assignments -->
-              <% if state.downcase == 'past' and current_user.role? :admin %>
-                  <%= link_to(assignment_path(assignment), method: :delete, data: { confirm: 'Are you sure you wish to delete this assignment?' }) do %>
-                  <i class="material-icons">delete</i>
-              <% end %>
-              <% end %>
+                 
+                  </td>
+           
+
+
+               
+                  <td>
+                    <%= link_to(edit_assignment_path(assignment), class: 'btn-small cyan darken-4') do %>
+                      &nbsp;Edit&nbsp;
+                    <% end %>
+                  </td>
+             
+
+               <% if current_user.role?(:admin) %>
+                  <td>
               
-            </td>
+              <%= link_to(assignment_path(assignment), method: :delete, data: { confirm: 'Are you sure you wish to delete this information?' }, class: 'btn-small red darken-4') do %>
+
+                &nbsp;Delete&nbsp;
+                <% end %>
+                
+                 </td>
+              <% end %>
+             
+
+
+
+              <td>
+                <% if state.downcase == 'current' and current_user.role? :admin %>
+                <%= link_to(terminate_assignment_path(assignment), method: :patch, data: { confirm: 'Are you sure you wish to terminate this assignment?'}, class: 'btn-small orange darken-1') do %>
+                  &nbsp;Terminate&nbsp;
+                <% end %>
+                <% end %>
+              </td>
+
+
+          </td>
+           
           </tr>
         <% end %>
       </table>

@@ -1,18 +1,85 @@
 <nav id="nav">
   <div class="container">
     <ul class="left hide-on-med-and-down">
+      <% if current_user.role?(:admin)%>
       <li><%= link_to 'Stores', stores_path %></li>
+      <%end%>
+      <% if current_user.role?(:admin) || current_user.role?(:manager)%>
       <li><%= link_to 'Employees', employees_path %></li>
-      <li><%= link_to 'Assignments', assignments_path %></li>
+      <%end%>
+
+     <!--  <% if can? :read, :assignment %>
+          <%= link_to 'Assignments', assignments_path%>
+          
+      <% end %> -->
+
+
+      <% if current_user.role?(:admin) || current_user.role?(:manager)%>
+        <li><%= link_to 'Assignments', assignments_path %></li>
+      <% end %>
+      
 
       
+         
+      
+
+
+      <% if current_user.role?(:admin)%>
+          <li><%= link_to 'Pay Grades', pay_grades_path %></li>
+      <%end%>
+
+
+
+      <% if current_user.role?(:admin) || current_user.role?(:manager)%>
+          <li><%= link_to 'Jobs', jobs_path %></li>
+      <%end%>
+
+      <% if current_user.role?(:manager)%>
+          <li><%= link_to 'Payrolls', payroll_info_path %></li>
+      <%end%>
+
+      <ul id="dropdown2" class="dropdown-content">
+
+            <% if current_user.role?(:admin)%>
+              <li><%= link_to "View All Shifts", shifts_path(@all_shifts) %></li>
+            <%end%>
+            <% if current_user.role?(:manager)%>
+            <li><%= link_to "View My Store Shifts", shifts_path %></li>
+            <%end%>
+             <% if current_user.role?(:admin) || current_user.role?(:manager)%>
+              <li><%= link_to "Add A Shift", new_shift_path %></li>
+            <%end%>
+             <% if current_user.role?(:employee)%>
+                <%= link_to "View My Shifts", shifts_path %>
+             <%end%>
+          </ul>
+          <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Shifts<i class="material-icons right">arrow_drop_down</i></a></li>
+     
+
+
     </ul>
+
+
     <ul class="right">
       <li><%= link_to 'Logout', logout_path %></li>
     </ul>
+
     
     </ul>
   </div>
 </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

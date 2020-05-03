@@ -1,0 +1,99 @@
+<div class="card">
+  <div class="card-content">
+    <h5>No Show Shifts at <%=shifts[0].assignment.store.name%></h5>
+
+    <% if shifts.blank? %>
+      <p>There are no <%= state.downcase %> shifts at this time.</p>
+    <% else %>
+
+      <table class="striped highlight">
+        <thead>
+          <tr>
+            <th>Shift ID</th>
+            <th>Employee Name</th>
+            <th>Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Reason for No-Show?</th>
+            <th>Call this Worker!</th>
+                       
+          </tr>
+        </thead>
+        <tbody>
+          <% shifts.each do |shift| %>
+            <tr>
+
+              <td><%= shift.id%></td>
+              <td class='hyperlink'><%= link_to shift.employee.name, employee_path(shift.assignment.employee) %></td>
+              <td><%= shift.date.strftime("%-m/%-d/%y")%></td>
+              <td><%=shift.start_time.strftime("%H:%M %p")%></td>
+              <td><%=shift.end_time.strftime("%H:%M %p")%></td>
+                
+
+
+              <td>
+                <ul class="collapsible">
+                  <li>
+                    <div class="collapsible-header"><i class="material-icons">edit</i>Edit</div>
+                    <div class="collapsible-body">
+                      
+                        <%= simple_form_for(shift) do |f| %>
+                          <%= f.error_notification %>
+                          <div class="row">
+                            <div class="form-inputs">
+                              <%= f.input :notes, label_html: { class: 'active' } %>
+                          </div>
+
+                          <div class="row">
+                            <div class="form-actions col s9">
+                              <%= f.button :submit, "Update Note" %>
+                            </div>
+                          </div>
+                          <%end%>
+
+                    </div>
+                  </li>
+                  
+                </ul>
+              </td>
+              </td>
+
+              <td>
+                  <%=shift.assignment.employee.phone%>
+              
+                
+              </td>
+
+              <td>
+                      
+                      <%= link_to(shift_path(shift), class: 'btn-small black darken-1') do %>
+                        &nbsp;View Shift &nbsp;
+
+                  <% end %>
+
+
+                 
+                  </td>
+           
+
+                  <!--  -->
+                       
+
+               
+            </tr>
+
+           
+
+            
+        <% end %>
+        </tbody>
+      </table>
+      <p class="supertiny"></p>
+      <br />
+      
+      <%= will_paginate shifts, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+      <br />
+   
+    <% end %>
+  </div>
+</div>

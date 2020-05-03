@@ -1,0 +1,16 @@
+
+
+<%= form_with url: new_store_payroll_path do |f| %>
+	
+	<%= collection_select(:store, Store.all, @stores, :id, :name) %>
+
+	
+
+	
+	<%= f.submit "Generate Payroll" %>
+
+<% end %>
+
+
+
+

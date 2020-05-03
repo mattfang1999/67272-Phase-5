@@ -1,0 +1,44 @@
+<div class="card">
+  <div class="card-content">
+    
+
+    <% if employees.blank? %>
+      <p>There are no employees at your store.</p>
+    <% else %>
+      <h5>Add upcoming shifts to employees assigned to your store within the next seven days</h5>
+      <table class="striped highlight">
+        <thead>
+          <tr>
+            <th>Employee Name</th>
+            <th>Add Shift</th>
+                       
+          </tr>
+        </thead>
+        <tbody>
+          <% employees.each do |employee| %>
+            <tr>
+
+            
+              <td class='hyperlink'><%= link_to employee.name, employee_path(employee) %></td>
+              
+              <td><%= link_to(new_shift_path, class: 'btn-small green darken-1') do %>
+                        &nbsp;Add Shift&nbsp;</td>
+                <%end%>
+
+            </tr>
+
+           
+
+            
+        <% end %>
+        </tbody>
+      </table>
+      <p class="supertiny"></p>
+      <br />
+      
+      <%= will_paginate employees, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+      <br />
+   
+    <% end %>
+  </div>
+</div>

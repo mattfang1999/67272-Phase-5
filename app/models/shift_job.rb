@@ -6,7 +6,18 @@ class ShiftJob < ApplicationRecord
   belongs_to :job
 
   # Scopes
-  scope :alphabetical, -> { joins(:job).order('name') }
+  scope :alphabetical, ->{ joins(:job).order('name') }
+
+  scope :for_shift, ->(shift){where("shift_id = ?", shift.id)}
+    scope :for_employee,  ->(employee) { where("employee_id = ?", employee.id) }
+
+    # scope :for_employee,  ->(employee) { where("employee_id = ?", employee.id) }
+
+
+
+
+
+
 
   # Validations
   validates_presence_of :shift_id, :job_id

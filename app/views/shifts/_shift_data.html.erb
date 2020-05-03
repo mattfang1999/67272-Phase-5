@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-content">
+    <h4>Shift <%= @shift.id %> for <%= current_user.proper_name%></h4>
+
+        <p>Date:</p>
+        
+        <p><%=@shift.date%></p>
+        <br>
+        <p>Start Time:</p>
+       
+        <p><%=@shift.start_time.strftime("%H:%M")%></p>
+        <br>
+        <p>End Time:</p>
+        <p><%=@shift.end_time.strftime("%H:%M")%></p>
+        <br>
+        <p>Notes:</p>
+      
+        <p><%=@shift.notes%></p>
+        <br>
+        
+
+      
+
+        
+
+     
+
+    
+      <br>
+  </div>
+</div>
+

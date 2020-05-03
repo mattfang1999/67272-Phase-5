@@ -1,0 +1,26 @@
+        <%= render :partial => "partials/title_with_search", locals: {title: "Employees at AMC"} %>
+
+  <div class="card gray lighten-1">
+    <div class="card-content">
+      <div class='card-top'>
+        <h3><%=current_user.proper_name%>'s Dashboard</h3>
+      <p>Use this dashboard to see no shifts and calculate payroll</p>
+      </div>
+      
+         
+     
+    
+    
+     
+    </div>
+    <div class="card-tabs">
+      <ul class="tabs tabs-fixed-width">
+        <li class="tab"><a href="#test5">Store Payroll Calculator</a></li>
+        <li class="tab"><a class='active'href="#test7">Stores with No-Shows</a></li>
+      </ul>
+    </div>
+    <div class="card-content gray lighten-4">
+      <div id="test5"><%= render :partial => "stores/store_lists", locals: {stores: @stores, state: 'Active'}%></div>
+      <div id="test7"><%= render :partial => "employees/stores_with_no_shows",  locals: {stores: @no_show_stores, state: 'finished'}%></div>
+    </div>
+  </div>

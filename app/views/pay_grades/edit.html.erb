@@ -1,0 +1,6 @@
+<% if current_user.role? :admin %>
+	<%= render partial: 'partials/form_structure', locals: {object: @pay_grade, 
+                                                        type_of_form: 'Pay Grade',
+                                                        fields: 'fields'} %>
+
+ <%end%>                                

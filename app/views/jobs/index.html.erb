@@ -1,0 +1,14 @@
+<% if current_user.role?(:admin) || current_user.role?(:manager) %>
+	<%= render partial: 'jobs_list', locals: {model_name: 'job', 
+                                                         primary: 'jobs_list', 
+                                                         secondary: nil,
+                                                         sidebar: nil,
+                                                     	 jobs: @jobs,
+                                                     	 state: 'active'
+                                                     		} %>
+          
+<% else %>
+	You are an employee. Let's just redirect you to another page. Still gotta code that. Sorry.
+<% end %>
+
+

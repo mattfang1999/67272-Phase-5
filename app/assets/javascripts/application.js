@@ -21,15 +21,50 @@
 // @import "materialize";
 // @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
-//= require foundation
-$(function(){ $(document).foundation(); });
+ M.AutoInit();
 
 // Flash fade
 $(function() {
-  $('.alert-box').fadeIn('normal', function() {
-     $(this).delay(3700).fadeOut();
+   $('.alert-box').fadeIn('normal', function() {
+      $(this).delay(3700).fadeOut();
+   });
+});
+
+// Carousel function
+$(document).ready(function(){
+  $('.carousel').carousel();
+
+  $(".dropdown-trigger").dropdown({
+    coverTrigger: false
   });
 });
+
+
+  // $(document).ready(function(){
+  //   $('#dates').hide();
+  //   $('.custom_radio_button')[0].change(function() {
+  //     console.log("hello world");
+  //         if (evt.target.value === "0") {
+  //             $('#dates').show();
+  //         } else {
+  //             $('#dates').hide();
+  //         }
+  //     })
+  // });
+
+
+
+$('#dates').hide();
+$('input[name="set_start"]').on('change', function(evt) {
+
+   if (evt.target.value === "0") {
+      $('#dates').show();
+   } else {
+      $('#dates').hide();
+   }
+})
+
+
 
 // Best in place functionality
 $(document).ready(function() {
@@ -47,4 +82,61 @@ $(document).ready(function() {
     }
   }
 });
+
+
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.tabs').tabs();
+  });
+
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems, options);
+  });
+
+
+
+// Search submit on enter
+$(document).ready(function() {
+  function submitForm() {
+    document.getElementById("search").submit();
+  }
+  document.onkeydown = function () {
+    if (window.event.keyCode == '13') {
+        submitForm();
+    }
+  }
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(elems, options);
+  });
+
+
+//J Query
+
+
+
+//   $(document).ready(function(){
+//     $('input[name="set_start"]').on('change', function(evt) {
+//    if (evt.target.value === "0") {
+//       $('#dates').show();
+//    } else {
+//       $('#dates').hide();
+//    }
+// })
+//   });
+
+
+
+
+  $( document ).ready(function() {
+    console.log( "ready!" );
+});
+
+
 

@@ -1,4 +1,16 @@
-<%= render partial: 'partials/index_structure', locals: {model_name: 'store', 
+<% if can? :read, :store %>
+	<%= render partial: 'partials/index_structure', locals: {model_name: 'store', 
                                                          primary: 'active_stores', 
                                                          secondary: 'inactive_stores',
+
                                                          sidebar: nil} %>
+          
+<% else %>
+	You are an employee. Let's just redirect you to another page. Still gotta code that. Sorry.
+<% end %>
+
+
+                                                      
+
+
+

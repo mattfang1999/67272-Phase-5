@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="card-content">
+    <h4>Assignment <%= @assignment.id %> for <%= @assignment.employee.proper_name%></h4>
+
+    <b>Current Assignment:&nbsp;&nbsp;</b><br>
+      <% if @assignment.nil? %>
+        n/a<br /><br />
+      <% else %>
+        <%= link_to @assignment.store.name, store_path(@assignment.store) %><br />
+        since <%= @assignment.start_date.strftime("%b %-d, %Y") %><br /><br />
+        <p>Assignment Start Date: <%=@assignment.start_date%></p>
+        <%if @assignment.end_date == nil %>
+        <p>Assignment End Date: n/a</p>
+        <%else%>
+          <p>Assignment End Date: <%=@assignment.end_date%></p>
+        <%end%>
+
+      <% end %>
+
+    
+      <br>
+  </div>
+</div>
+

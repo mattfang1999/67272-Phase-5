@@ -1,33 +1,71 @@
 html {
   // Preloaded with three fonts; uncomment the one you prefer
   // font-family: 'Alfa Slab One', cursive;
-  font-family: 'Nunito', sans-serif;
+  // font-family: 'Nunito', sans-serif;
   // font-family: 'Bitter', serif;
   // font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Times';
+
 }
+
+
+
+
+body{
+  // background-color: #484848;
+  background-color: #343434;
+}
+
+h3{
+  color: silver;
+}
+
+/********** Home ********/
+.dramatic{
+  display:block;
+  margin: 3% auto;
+}
+
+#home-title{
+  text-align:center;
+  font-size: 2rem;
+}
+
+/********** Text for guests ********/
+
+.row #text{
+  color:silver;
+}
+
 
 /********** TOPBAR & NAV ********/
 #topbar {
-  background-color: #00274C;
+  background-color: #3A3A3A;
   padding-top: 5px;
   margin-bottom: 0px;
-  color: #FFCB05;
-  font-family: 'Alfa Slab One', cursive;
+  color: silver;
+  font-family: 'Apple Chancery', cursive;
+
 }
 
+#topbar h2{
+  text-align:center;
+  font-size: 4rem;
+}
 #topbar a {
-  color: #FFCB05;
+  color: silver;
+  font-weight:bold;
 }
 
 #nav {
-  background-color: #00274C;
+  background-color: #3A3A3A;
   height: 50px;
-  font-family: 'Alfa Slab One', cursive;
 }
 
 #nav ul a {
-  color: #FFCB05;
+  color: silver;
   font-size: 1.2rem;
+  font-family: 'Times';
 }
 
 /********** FLASH MSGS ********/
@@ -51,30 +89,76 @@ html {
 /********** FOOTER ********/
 
 #footer {
-  background-color: #00274C;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  background-color: #3A3A3A;
   margin-bottom: 0px;
-  color: yellow;
   line-height: 2rem;
-  font-family: 'Alfa Slab One', cursive;
+  color: silver;
+  font-family: 'Times';
 }
 
 #footer a {
-  color: #FFCB05;
+  color: silver;
+}
+
+
+.card{
+  background-color: #3A3A3A;
+  color:silver;
+}
+
+.collapsible-header{
+  background-color:black;
+  color:silver;
+}
+
+#tabbed h4{
+  color:silver;
+  font-family: 'Apple Chancery', cursive;
+}
+.collapsible-header th{
+  color:silver;
+}
+
+.striped-highlight th{
+  color:silver;
+}
+
+.card h3{
+  font-family: 'Apple Chancery', cursive;
+}
+
+.card h4{
+  font-family: 'Apple Chancery', cursive;
+}
+
+#test-swipe-1, #test-swipe-2{
+  color:silver;
 }
 
 /********** TABLES ********/
+
+table .hyperlink a{
+  
+  border-bottom: 2px solid;
+
+}
+
+table.striped a {
+  color:silver;
+}
+
 table.striped > tbody > tr:nth-child(odd) {
-  background-color: #fff;
+  background-color: #3C3B3B;
+  color:silver;
 }
 
 table.striped > tbody > tr:nth-child(even) {
-  background-color: #fffde7;
+  background-color: #4F4F41;
 }
 
 table.highlight > tbody > tr:hover {
   background-color: #fff59d;
+  background-color: #403200;
 }
 
 td.align_right {
@@ -123,9 +207,18 @@ th.align_center {
   color: #fff;
 }
 
+/***DROPDOWN***/
+#dropdown1{
+  background-color:gold;
+}
+
 /********** FORMS ********/
 .switch label input[type=checkbox]:checked + .lever {
   background-color: #ffea00;
+}
+
+input[type=text] {
+  color: silver;
 }
 
 .switch label input[type=checkbox]:checked + .lever::after {
@@ -162,6 +255,36 @@ input[type=text].search {
   background-color: #FFCB05;
 }
 
+
+[type="radio"]:not(:checked), [type="radio"]:checked {
+   
+    opacity: 100;
+    position: relative;
+    display:block;
+    pointer-events:auto;
+}
+
+    label {
+      float: left;
+      clear: none;
+      display: block;
+      padding: 0px 1em 0px 8px;
+    }
+    
+    input[type=radio],
+    input.radio {
+      float: left;
+      clear: none;
+      margin: 2px 0 0 2px;
+    }
+
+
+input[type=date]{
+    color:silver;
+}
+
+
+
 [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:after {
   border: 2px solid #FFCB05;
   background-color: #FFCB05;
@@ -187,7 +310,12 @@ input[type=text].search {
   height: 250px;
 }
 
+i.medium.material-icons{
+  color:silver;
+}
 /********** CARDS ********/
+
+
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
   color: #ffab00;
 }
@@ -200,9 +328,15 @@ li.no_bullet {
   list-style-type: none;
 }
 
+
 /********** TABS ********/
+
+.tabs{
+  background-color:gray;
+}
 .tabs .tab a.active {
   color: #ffc400;
+
 }
 
 .tabs .tab a:hover {
@@ -220,6 +354,8 @@ li.no_bullet {
   background-color: #FFCB05;
   will-change: left, right;
 }
+
+
 
 /********** FLASH MSGs ********/
 .alert-box {

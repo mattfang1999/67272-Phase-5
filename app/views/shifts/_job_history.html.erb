@@ -1,0 +1,31 @@
+
+
+
+  <div class="card">
+    <div class="card-content">
+      <h5>Current Jobs</h5>
+
+      <table class="striped highlight">
+        <thead>
+        
+          
+        </thead>
+        <% @current_jobs.each do |shift_job| %>
+          <tr>
+            <td><%= shift_job.job.name %></td>
+          </tr>
+        <% end %>
+      </table>
+      <p class="supertiny"></p>
+      <br />
+    </div>
+    
+  </div>
+<% else %>
+  <% if current_user.role?(:admin) || current_user.role?(:manager)%> 
+  <div class="card grey lighten-3">
+    <div class="card-action">
+      <%= link_to "Add a new Job to this Shift", new_shift_job_path%>
+    </div>
+  </div>
+  <%end%>

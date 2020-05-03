@@ -1,0 +1,81 @@
+<div class="card">
+  <div class="card-content">
+    <h4>Jobs at AMC</h4>
+
+    <% if jobs.empty? %>
+      <p>There are no <%= state.downcase %> jobs at this time.</p>
+    <% else %>
+
+      <table class="striped highlight">
+        <thead>
+          <th>Name</th>
+          <th>State</th>
+          <th>Job Description</th>
+          
+          
+        </thead>
+        <% jobs.each do |job| %>
+          <tr>
+            <td><%= link_to job.name, job_path(job) %></td>
+            <%if job.active%>
+              <td>Active</td>
+            <%else%>
+              <td>Inactive</td>
+            <%end%>
+
+            
+
+        
+
+          <% if current_user.role?(:admin) || current_user.role?(:manager) %>
+              <td>
+                  <ul class="collapsible">
+                    <li>
+                      <div class="collapsible-header"><i class="material-icons">filter_drama</i>View Details</div>
+                      <div class="collapsible-body"><%= job.description %></div>
+                    </li>
+                    
+                  </ul>
+              </td>
+          <% end %>
+              
+         <% if current_user.role?(:admin)%>
+                  <td>
+                      
+                      <%= link_to(new_job_path, class: 'btn-small green darken-1') do %>
+                        &nbsp;Add&nbsp;
+
+                  <% end %>
+                  </td>
+
+                  <td>
+                    <%= link_to(edit_job_path(job), class: 'btn-small cyan darken-4') do %>
+                      &nbsp;Edit&nbsp;
+                    <% end %>
+                  </td>
+
+                   <td>
+              
+                    <%= link_to(job_path(job), method: :delete, data: { confirm: 'Are you sure you wish to delete this information?' }, class: 'btn-small red darken-4') do %>
+                      &nbsp;Delete&nbsp;
+
+                <% end %>
+                  </td>
+          <% end %>
+
+          
+
+
+
+
+
+           
+          </tr>
+        <% end %>
+      </table>
+      <p class="supertiny"></p>
+      <br />
+      <%= will_paginate jobs, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+    <% end %>
+  </div>
+</div>

@@ -1,2 +1,19 @@
-<h1>Assignments#show</h1>
-<p>Find me in app/views/assignments/show.html.erb</p>
+<% if current_user.role?(:admin) || current_user.role?(:manager)%>
+
+
+<%= render partial: 'partials/show_structure', locals: {model_name: 'assignment', 
+                                                         object: @assignment,
+                                                         primary: 'assignment_data', 
+                                                         secondary: nil,
+                                                         sidebar: 'shift_history',
+                                                     	 sidebar2: nil} %>
+
+
+
+
+
+
+<% end %>
+
+
+

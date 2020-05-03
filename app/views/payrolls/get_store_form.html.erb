@@ -1,0 +1,62 @@
+
+<div class="row">
+  <div class="col s9">
+    <div class="card">    
+      <div class="card-content">
+        <span class="card-title">Payroll calculator for <%=@store.name%></span>
+        <%= form_with url: calculate_stores_path, method: :get, local: true%>
+          <div class="row">
+            <div class="form-inputs">
+
+            	<p>Choose from a biweekly or monthly option, then submit!</p>
+             		<%= hidden_field_tag 'store_id', @store.id %>
+
+
+             		<%= radio_button_tag 'set_start', 14%>
+			    	<%= label :set_start, 'Biweekly' %>
+             		<%= radio_button_tag  'set_start', 30 %>
+			    	<%= label :set_start, 'Monthly' %>
+          		<br><br><br><br><br><br>
+          		<p>If you'd like to find a payroll for a custom date range, click on custom and input your dates!</p>
+             		<%= radio_button_tag 'set_start', 0 %>
+			     	<%= label :set_start, 'Custom', class: 'custom_radio_button' %>
+
+             		<br>
+			     	<br>
+
+			     	<div id='dates'>
+			     		<%= label :starting, 'Start date'%>
+			     		<%= text_field_tag 'starting', placeholder="MM/DD/YYYY"%> 	
+			    	<br>
+			    		<%= label :ending, 'End date' %>
+						<%= text_field_tag 'ending', placeholder="MM/DD/YYYY" %>
+			     	</div>
+			     	
+					
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="row">
+        <div class="form-actions col s9">
+          <%= submit_tag("Submit") %>
+        </div>
+      </div>
+   
+  </div>
+</div>
+<%= link_to 'Back', :back %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

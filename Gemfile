@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-gem 'foundation-rails'
+
 gem 'autoprefixer-rails'
 
 # Use ActiveStorage variant
@@ -47,6 +47,8 @@ gem 'materialize-form', git: 'https://github.com/cmu-is-projects/materialize-for
 gem 'will_paginate'
 gem 'jquery-rails', '4.3.1'
 gem 'jquery-ui-rails', '6.0.1'
+
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

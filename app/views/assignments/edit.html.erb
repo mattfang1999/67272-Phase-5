@@ -1,3 +1,13 @@
-<%= render partial: 'partials/form_structure', locals: {object: @assignment, 
+<% if can? :edit, :assignment %>
+	<%= render partial: 'partials/form_structure', locals: {object: @assignment, 
                                                         type_of_form: 'Assignment',
                                                         fields: 'fields'} %>
+          
+<% else %>
+	You are an employee or a manager. Cannot edit an assignment man. 
+<% end %>
+
+
+
+
+

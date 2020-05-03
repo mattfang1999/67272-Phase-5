@@ -1,0 +1,20 @@
+
+  <div class="card gray lighten-1">
+    <div class="card-content">
+      <h3><%=current_user.proper_name%>'s Dashboard</h2>
+      <h4>Your Store: <%=@no_show_shifts[0].assignment.store.name%></p></h3>
+      <p>Use this dashboard to add upcoming shifts to employee, find out the no-shows, and add notes to finished shifts!</p>
+    </div>
+    <div class="card-tabs">
+      <ul class="tabs tabs-fixed-width">
+        <li class="tab"><a href="#test4">No-Show Shifts</a></li>
+        <li class="tab"><a  href="#test5">Employees at Your Store</a></li>
+        <li class="tab"><a href="#test6">Finished Employee Shifts</a></li>
+      </ul>
+    </div>
+    <div class="card-content gray lighten-4">
+      <div id="test4"><%= render :partial => "employees/no_show_employee_shifts_list", locals: {shifts: @no_show_shifts, state: 'finished'}%></div>
+      <div id="test5"><%= render :partial => "employees/employees_at_manager_store", locals: {employees: @employees_at_manager_store, state: 'finished'}%></div>
+      <div id="test6"><%= render :partial => "employees/manager_finished_employee_shifts_list", locals: {shifts: @finished_shifts_for_manager_store, state: 'finished'}%></div>
+    </div>
+  </div>
