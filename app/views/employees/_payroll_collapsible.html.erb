@@ -1,0 +1,88 @@
+  <ul class="collapsible">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">attach_money</i>Payroll for Past 7 Days</div>
+      <div class="collapsible-body">
+        
+        <table class='striped-highlight'>
+        <thead>
+          <tr>
+
+              <th>Total Amount Earned</th>
+              <th>Hours Worked</th>
+              <th>Pay Rate</th>
+              <th>Pay Grade</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          <th>$<%=@seven_days_employee_payroll_record.pay_rate%></th>
+          <th><%=@seven_days_employee_payroll_record.hours%> hours</th>
+          <th>$<%=@seven_days_employee_payroll_record.pay_earned%></th>
+          <th><%=@seven_days_employee_payroll_record.pay_grade%></th>
+          
+        </tbody>
+      </table>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">attach_money</i>Payroll for Past Half Month</div>
+      <div class="collapsible-body">
+        
+
+
+        <table class='striped-highlight'>
+        <thead>
+          <tr>
+
+              <th>Total Amount Earned</th>
+              <th>Hours Worked</th>
+              <th>Pay Rate</th>
+              <th>Pay Grade</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          <th>$<%=@half_month_employee_payroll_record.pay_rate%></th>
+          <th><%=@half_month_employee_payroll_record.hours%> hours</th>
+          <th>$<%=@half_month_employee_payroll_record.pay_earned%></th>
+          <th><%=@half_month_employee_payroll_record.pay_grade%></th>
+          
+        </tbody>
+      </table>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">attach_money</i>Payroll for Past Month</div>
+      <div class="collapsible-body">
+        
+        <table class='striped-highlight'>
+        <thead>
+          <tr>
+
+              <th>Total Amount Earned</th>
+              <th>Hours Worked</th>
+              <th>Pay Rate</th>
+              <th>Pay Grade</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          <th>$<%=@monthly_employee_payroll_record.pay_rate%></th>
+          <th><%=@monthly_employee_payroll_record.hours%> hours</th>
+          <th>$<%=@monthly_employee_payroll_record.pay_earned%></th>
+          <th><%=@monthly_employee_payroll_record.pay_grade%></th>
+          
+        </tbody>
+      </table>
+      </div>
+    </li>
+  </ul>
+
+
+
+
+
+  
