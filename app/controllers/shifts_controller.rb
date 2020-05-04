@@ -73,7 +73,7 @@ class ShiftsController < ApplicationController
       @time_clock = TimeClock.new(@shift)
       @time_clock.start_shift_at(Time.now)
       @shift.reload
-      redirect_to employees_path, notice: "Shift for #{@shift.start_time} has begun"
+      redirect_to home_path, notice: "Shift for #{@shift.start_time} has begun"
   end
 
 
