@@ -54,7 +54,8 @@
       </table>
       <p class="supertiny"></p>
       <br />
-      <%= will_paginate employees, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+      <%= will_paginate employees, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next", :param_name => page %>
+
     <% end %>
 
   </div>

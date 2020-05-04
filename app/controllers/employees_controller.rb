@@ -5,9 +5,9 @@ class EmployeesController < ApplicationController
     # for phase 3 only
 
     if current_user.role?(:admin)
-    @active_managers = Employee.managers.active.alphabetical.paginate(page: params[:page]).per_page(10)
-    @active_employees = Employee.regulars.active.alphabetical.paginate(page: params[:page]).per_page(10)
-    @inactive_employees = Employee.inactive.alphabetical.paginate(page: params[:page]).per_page(10)
+    @active_managers = Employee.managers.active.alphabetical.paginate(page: params[:man_page]).per_page(10)
+    @active_employees = Employee.regulars.active.alphabetical.paginate(page: params[:emp_page]).per_page(10)
+    @inactive_employees = Employee.inactive.alphabetical.paginate(page: params[:in_page]).per_page(10)
     elsif current_user.role?(:manager)
     @active_managers = Employee.for_store(current_user.current_assignment.store_id).managers.active.alphabetical.paginate(page: params[:page]).per_page(10)
     @active_employees = Employee.regulars.for_store(current_user.current_assignment.store_id).active.alphabetical.paginate(page: params[:page]).per_page(10)
@@ -74,12 +74,14 @@ class EmployeesController < ApplicationController
         date_range = DateRange.new(7.days.ago.to_date, 7.days.from_now.to_date)
         @past_shifts = Shift.past.by_store.by_employee.for_past_days(7).for_employee(@employee).paginate(page: params[:page]).per_page(5)
         @pending_shifts = Shift.pending.by_store.by_employee.for_dates(date_range).for_employee(@employee).paginate(page: params[:page]).per_page(5)
+        @completed_shifts = Shift.completed.by_store.by_employee.for_dates(date_range).for_employee(@employee).paginate(page: params[:page]).per_page(5)
       else
         date_range = DateRange.new(7.days.ago.to_date, 7.days.from_now.to_date)
         @past_shifts = Shift.past.by_store.by_employee.for_past_days(7).for_employee(current_user).paginate(page: params[:page]).per_page(5)
         @pending_shifts = Shift.pending.by_store.by_employee.for_dates(date_range).for_employee(current_user).paginate(page: params[:page]).per_page(5)
         @past_shifts = Shift.past.by_store.by_employee.for_employee(current_user).paginate(page: params[:page]).per_page(5)
         @completed_shifts = Shift.completed.for_employee(current_user).by_employee.paginate(page: params[:page]).per_page(5)
+        
 
       end
       # @past_shifts = Shift.past.by_store.by_employee.for_employee(current_user).paginate(page: params[:page]).per_page(5)

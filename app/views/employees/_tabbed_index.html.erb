@@ -14,7 +14,7 @@
       </ul>
     </div>
     <div id="test3" class="col s12"><%= render :partial => "active_just_employees", locals: {employees: @active_employees, state: 'active'} %> </div>
-    <div id="test1" class="col s12"><%= render :partial => "employee_lists", locals: {employees: @active_managers, state: 'active', state: 'active', role: 'managers'} %> </div>
+    <div id="test1" class="col s12"><%= render :partial => "employee_lists", locals: {employees: @active_managers, state: 'active', role: 'managers', page:'man_page'} %> </div>
 	</div>
     <div id="test2" class="col s12"><%= render :partial => "inactive_employees", locals: {employees: @inactive_employees, state: 'inactive'} %></div>
     

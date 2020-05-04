@@ -1,7 +1,7 @@
 
   <div class="card gray lighten-1">
     <div class="card-content">
-      Find your store's payrolls.
+      <h5>Find your store's payrolls.</h5>
     </div>
     <div class="card-tabs">
       <ul class="tabs tabs-fixed-width">
@@ -10,7 +10,7 @@
       </ul>
     </div>
     <div class="card-content gray lighten-4">
-      <div id="test5"><%= render :partial => "store_payroll", locals: {payrolls: @biweekly_store_payroll, state: 'finished'}%></div>
-      <div id="test6"><%= render :partial => "store_payroll", locals: {payrolls: @month_store_payroll, state: 'finished'}%></div>
+      <div id="test5"><%= render :partial => "store_payroll", locals: {payrolls: @biweekly_store_payroll, the_date_range: @bi_date_range}%></div>
+      <div id="test6"><%= render :partial => "store_payroll", locals: {payrolls: @month_store_payroll, the_date_range: @month_date_range}%></div>
     </div>
   </div>

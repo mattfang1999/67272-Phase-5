@@ -9,7 +9,7 @@ class ShiftsController < ApplicationController
     if current_user.role? :admin
       @all_shifts = Shift.all.paginate(page: params[:page]).per_page(5)
       @upcoming_shifts = Shift.upcoming.for_dates(@fourteen_day_range).by_store.chronological.by_employee.paginate(page: params[:page]).per_page(5)
-      @past_shifts = Shift.past.for_dates(@fourteen_day_range).by_store.by_employee.chronological.paginate(page: params[:page]).per_page(5)
+      @past_shifts = Shift.past.completed.for_dates(@fourteen_day_range).by_store.by_employee.chronological.paginate(page: params[:page]).per_page(5)
       @completed_shifts = Shift.completed.by_store.by_employee.chronological.paginate(page: params[:page]).per_page(5)
       @pending_shifts = Shift.pending.by_store.by_employee.chronological.paginate(page: params[:page]).per_page(5)
 
@@ -21,8 +21,8 @@ class ShiftsController < ApplicationController
       @pending_shifts = Shift.pending.for_next_days(7).by_store.by_employee.chronological.paginate(page: params[:page]).per_page(5)
     elsif current_user.role? :employee
       #upcoming shifts for next 7 days 
-      @upcoming_shifts  = Shift.upcoming.for_employee(current_user).chronological.paginate(page: params[:page]).per_page(15)
-      @past_shifts = Shift.past.for_employee(current_user).by_employee.chronological.paginate(page: params[:page]).per_page(15)
+      @upcoming_shifts  = Shift.upcoming.for_employee(current_user).chronological.paginate(page: params[:page]).per_page(8)
+      @past_shifts = Shift.past.for_employee(current_user).by_employee.chronological.paginate(page: params[:page]).per_page(8)
       @completed_shifts = Shift.completed.for_employee(current_user).chronological.by_employee.paginate(page: params[:page]).per_page(5)
       @pending_shifts = Shift.pending.for_employee(current_user).chronological.by_employee.paginate(page: params[:page]).per_page(5)
     end

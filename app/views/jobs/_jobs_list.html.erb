@@ -31,7 +31,7 @@
               <td>
                   <ul class="collapsible">
                     <li>
-                      <div class="collapsible-header"><i class="material-icons">filter_drama</i>View Details</div>
+                      <div class="collapsible-header"><i class="material-icons">details</i>View Details</div>
                       <div class="collapsible-body"><%= job.description %></div>
                     </li>
                     
@@ -40,13 +40,7 @@
           <% end %>
               
          <% if current_user.role?(:admin)%>
-                  <td>
-                      
-                      <%= link_to(new_job_path, class: 'btn-small green darken-1') do %>
-                        &nbsp;Add&nbsp;
-
-                  <% end %>
-                  </td>
+                  
 
                   <td>
                     <%= link_to(edit_job_path(job), class: 'btn-small cyan darken-4') do %>
@@ -77,5 +71,10 @@
       <br />
       <%= will_paginate jobs, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
     <% end %>
+
+    <% if current_user.role?(:admin)%>
+  <%= render :partial => "partials/add_new_object", locals: {model_name: 'job'} %>
+<% end %>
+
   </div>
 </div>

@@ -23,7 +23,12 @@
 
             <% if shift.status != 'finished'%>
               <td><%= link_to shift.employee.name, employee_path(shift.assignment.employee) %></td>
-              <td><%= link_to shift.assignment.store.name, store_path(shift.assignment.store) %></td>
+
+              <%if current_user.role?(:admin)%>
+                <td><%= link_to shift.assignment.store.name, store_path(shift.assignment.store) %></td>
+              <%else%>
+                <td><%= shift.assignment.store.name%></td>
+              <%end%>
               <td><%= shift.date.strftime("%-m/%-d/%y")%></td>
               <td><%=shift.start_time.strftime("%H:%M")%></td>
               <td><%=shift.end_time.strftime('%H:%M')%></td>

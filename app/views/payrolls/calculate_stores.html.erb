@@ -1,9 +1,5 @@
 
 
-<%= render :partial => "store_payroll", locals: {payrolls: @payrolls, state: 'finished'}%>
+<%= render :partial => "store_payroll", locals: {payrolls: @payrolls, state: 'finished', the_date_range: @store_date_range}%>
 
-
-
-
-
-<%= link_to 'Back', :back %>
+<%= link_to 'Calculate Another Payroll', :back %>

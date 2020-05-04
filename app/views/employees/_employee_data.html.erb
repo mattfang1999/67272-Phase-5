@@ -7,8 +7,15 @@
       <% if @employee.current_assignment.nil? %>
         n/a<br /><br />
       <% else %>
+
+        <%if current_user.role?(:admin)%>
         <%= link_to @employee.current_assignment.store.name, store_path(@employee.current_assignment.store) %><br />
         since <%= @employee.current_assignment.start_date.strftime("%b %-d, %Y") %><br /><br />
+        <%else%>
+       <%= @employee.current_assignment.store.name%>
+        since <%= @employee.current_assignment.start_date.strftime("%b %-d, %Y") %><br /><br />
+        <%end%>
+
 
       <% end %>
 

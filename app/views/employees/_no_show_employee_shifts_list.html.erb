@@ -26,8 +26,8 @@
               <td><%= shift.id%></td>
               <td class='hyperlink'><%= link_to shift.employee.name, employee_path(shift.assignment.employee) %></td>
               <td><%= shift.date.strftime("%-m/%-d/%y")%></td>
-              <td><%=shift.start_time.strftime("%H:%M %p")%></td>
-              <td><%=shift.end_time.strftime("%H:%M %p")%></td>
+              <td><%=shift.start_time.strftime("%I:%M %p")%></td>
+              <td><%=shift.end_time.strftime("%I:%M %p")%></td>
                 
 
 
@@ -91,7 +91,7 @@
       <p class="supertiny"></p>
       <br />
       
-      <%= will_paginate shifts, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+      <%= will_paginate shifts, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next"%>
       <br />
    
     <% end %>

@@ -11,7 +11,7 @@
           <tr>
             <th>Level</th>
             <th>Status</th>
-            <th>View Pay Grade Rates</th>
+            <th>View Rates Associated with this Pay Grade</th>
             <th>Add a Pay Grade Rate</th>
             <th>Edit Pay Grade Level</th>
             
@@ -36,7 +36,7 @@
                           <div class="collapsible-header">View</div>
                           <div class="collapsible-body">
                                   <%PayGradeRate.for_pay_grade(pg).each do |pgr| %>
-                                      Rate <%=pgr.id%>: $<%=pgr.rate%> <br>
+                                      Rate <%=pgr.id%>: $<%=pgr.rate%> / hr <br>
                                   <%end%>
                               
                           </div>

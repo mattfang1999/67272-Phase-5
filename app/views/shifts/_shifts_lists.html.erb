@@ -27,15 +27,20 @@
             <tr>
 
               <td><%= link_to shift.id, shift_path(shift)%></td>
-              <td class='hyperlink'><%= link_to shift.assignment.store.name, store_path(shift.assignment.store)%></td>
+              <%if current_user.role?(:admin)%>
+                <td class='hyperlink'><%= link_to shift.assignment.store.name, store_path(shift.assignment.store)%></td>
+              <%else%>
+                <td><%= shift.assignment.store.name%></td>
+              <%end%>
+              
               <td class='hyperlink'><%= link_to shift.employee.name, employee_path(shift.assignment.employee) %></td>
 
 
               <td><%= shift.date.strftime("%-m/%-d/%y")%></td>
 
               <% if is_past == false%>
-              <td><%=shift.start_time.strftime("%H:%M")%></td>
-              <td><%=shift.end_time.strftime('%H:%M')%></td>
+              <td><%=shift.start_time.strftime("%I:%M %p")%></td>
+              <td><%=shift.end_time.strftime("%I:%M %p")%></td>
               <%end%>
                 
 
@@ -71,7 +76,7 @@
                   <td>
                       
                       <%= link_to(new_shift_job_path, class: 'btn-small blue darken-1') do %>
-                        &nbsp;Add Job to Shift&nbsp;
+                        &nbsp;Add Job to Shift <%=shift.id%>&nbsp;
                   <% end %>
 
                   </td>
