@@ -13,25 +13,25 @@
 
 
              		<%= radio_button_tag 'set_start', 14%>
-			    	<%= label :set_start, 'Biweekly' %>
+			    	    <%= label :set_start, 'Biweekly' %>
              		<%= radio_button_tag  'set_start', 30 %>
-			    	<%= label :set_start, 'Monthly' %>
-          		<br><br><br>
-          		<p>If you'd like to find a payroll for a custom date range, click on custom and input your dates!</p>
+			    	    <%= label :set_start, 'Monthly' %>
+          		  <br><br><br>
+
+
+          		  <p>If you'd like to find a payroll for a custom date range, click on custom and input your dates!</p>
              		<%= radio_button_tag 'set_start', 0 %>
-			     	<%= label :set_start, 'Custom', class: 'custom_radio_button' %>
+			     	    <%= label :set_start, 'Custom', class: 'custom_radio_button' %>
 
              		<br>
-			     	<br>
-
-			     	<div id='dates'>
-			     		<%= label :starting, 'Start date'%>
-			     		<%= text_field_tag 'starting', placeholder="MM/DD/YYYY"%> 	
-			    	<br>
-			    		<%= label :ending, 'End date' %>
-						<%= text_field_tag 'ending', placeholder="MM/DD/YYYY" %>
+			     	     <br>
+			     	 <div id='dates'>
+			     		  <%= label :starting, 'Start date'%>
+			     		  <%= text_field_tag 'starting', placeholder="MM/DD/YYYY"%> 	
+			    	    <br>
+			    		  <%= label :ending, 'End date' %>
+						    <%= text_field_tag 'ending', placeholder="MM/DD/YYYY" %>
 			     	</div>
-			     	
 					
           </div>
         </div>

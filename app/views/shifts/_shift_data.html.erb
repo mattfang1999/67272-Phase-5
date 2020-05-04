@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-content">
-    <h4>Shift <%= @shift.id %> for <%= current_user.proper_name%></h4>
+    <h4>Shift <%= @shift.id %> for <%= @shift.assignment.employee.proper_name%></h4>
 
         <p>Date:</p>
         

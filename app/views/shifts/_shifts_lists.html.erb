@@ -26,7 +26,7 @@
           <% shifts.each do |shift| %>
             <tr>
 
-              <td><%= link_to shift.id, shift_path(shift)%></td>
+              <td class='hyperlink'><%= link_to shift.id, shift_path(shift)%></td>
               <%if current_user.role?(:admin)%>
                 <td class='hyperlink'><%= link_to shift.assignment.store.name, store_path(shift.assignment.store)%></td>
               <%else%>
@@ -57,7 +57,7 @@
 
                <% if current_user.role?(:admin) || current_user.role?(:manager) %>
                   <td>
-              <%= link_to(shift_path(shift), method: :delete, data: { confirm: 'Are you sure you wish to delete this information?' }, class: 'btn-small red darken-4') do %>
+              <%= link_to(shift_path(shift), method: :delete, data: { confirm: 'Are you sure you wish to delete this shift?' }, class: 'btn-small red darken-4') do %>
                 &nbsp;Delete&nbsp;
 
               <% end %>

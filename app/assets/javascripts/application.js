@@ -40,17 +40,7 @@ $(document).ready(function(){
 });
 
 
-  // $(document).ready(function(){
-  //   $('#dates').hide();
-  //   $('.custom_radio_button')[0].change(function() {
-  //     console.log("hello world");
-  //         if (evt.target.value === "0") {
-  //             $('#dates').show();
-  //         } else {
-  //             $('#dates').hide();
-  //         }
-  //     })
-  // });
+  
 
 
 

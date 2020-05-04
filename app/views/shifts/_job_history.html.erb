@@ -13,6 +13,11 @@
         <% @current_jobs.each do |shift_job| %>
           <tr>
             <td><%= shift_job.job.name %></td>
+
+          
+
+            <td><%= link_to "Remove", shift_job, :method => :delete, data: { confirm: 'Are you sure you wish to delete this information?' },class: 'btn-small red darken-4'  %></td>
+           
           </tr>
         <% end %>
       </table>
@@ -29,3 +34,5 @@
     </div>
   </div>
   <%end%>
+
+

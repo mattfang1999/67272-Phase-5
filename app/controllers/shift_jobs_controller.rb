@@ -54,7 +54,7 @@ class ShiftJobsController < ApplicationController
   # DELETE /shift_jobs/1
   # DELETE /shift_jobs/1.json
   def destroy
-    @shift_job.destroy
+    @shift_job.delete
     redirect_to shifts_path, notice: "Successfully removed job from the Shift"
   end
 
