@@ -70,10 +70,11 @@ class ShiftsController < ApplicationController
   end
 
   def clockin
-      @time_clock = TimeClock.new(@shift)
-      @time_clock.start_shift_at(Time.now)
+      @time_clock1 = TimeClock.new(@shift)
+      @time_clock1.start_shift_at(Time.now)
       @shift.reload
-      redirect_to home_path, notice: "Shift for #{@shift.start_time} has begun"
+      @shift.status = 'started'
+      redirect_to home_path, notice: "Shift for #{@shift.start_time.strftime( "%I:%M %p")} has begun"
   end
 
 
@@ -106,10 +107,11 @@ class ShiftsController < ApplicationController
   
 
   def clockout
-      @time_clock = TimeClock.new(@shift)
-      @time_clock.end_shift_at(Time.now)
+      @time_clock2 = TimeClock.new(@shift)
+      @time_clock2.end_shift_at(Time.now)
       @shift.reload
-      redirect_to employees_path, notice: "Shift has been clocked out"
+      @shift.status = 'finished'
+      redirect_to home_path, notice: "Shift has been clocked out"
   end
 
   private

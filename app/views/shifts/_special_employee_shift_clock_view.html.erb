@@ -22,7 +22,8 @@
             <tr>
 
             <% if shift.status != 'finished'%>
-              <td><%= link_to shift.employee.name, employee_path(shift.assignment.employee) %></td>
+
+              <td><%=shift.employee.name%></td>
 
               <%if current_user.role?(:admin)%>
                 <td><%= link_to shift.assignment.store.name, store_path(shift.assignment.store) %></td>
@@ -93,8 +94,6 @@
 
              <% if shift.status == 'started' %>
               <td>
-
-
 
                 
                 <%= link_to(clock_out_shift_path(shift), method: :patch, data: { confirm: 'Are you sure you wish to clock out this shift?' }, class: 'btn-small pink darken-1') do %>

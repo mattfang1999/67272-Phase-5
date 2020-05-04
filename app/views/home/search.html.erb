@@ -1,4 +1,7 @@
-<h5>Search result for term <em>'<%= @query %>'</em> resulted in <%= pluralize(@total_hits, 'hit') %></h5>
+<div id='search-words'>
+	
+
+<h4>Search result for term <em>'<%= @query %>'</em> resulted in <%= pluralize(@total_hits, 'hit') %></h4>
 <p class="supertiny">&nbsp;</p>
 
 <% unless @employees.empty? %>
@@ -10,4 +13,8 @@
   </ul>
   <p class="smtext">&nbsp;</p>
 <% end %>
+
+
+</div>
+
 
