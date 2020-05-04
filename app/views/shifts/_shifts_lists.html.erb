@@ -75,8 +75,9 @@
                <% if is_past %>
                   <td>
                       
-                      <%= link_to(new_shift_job_path, class: 'btn-small blue darken-1') do %>
+                      <%= link_to(new_shift_job_path(shift_id: shift.id), class: 'btn-small blue darken-1') do %>
                         &nbsp;Add Job to Shift <%=shift.id%>&nbsp;
+
                   <% end %>
 
                   </td>

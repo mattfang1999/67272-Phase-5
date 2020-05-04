@@ -81,6 +81,8 @@
             <% if can_clock %>
 
             <% if shift.status == 'pending' %>
+
+            
               <td>
                 
                 <%= link_to(clock_in_shift_path(shift), method: :patch, data: { confirm: 'Are you sure you wish to clock in this shift?' }, class: 'btn-small orange darken-1') do %>
@@ -88,6 +90,7 @@
                 <% end %>
              
               </td>
+              
 
              <% end %> 
 

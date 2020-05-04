@@ -18,6 +18,7 @@ class ShiftJobsController < ApplicationController
   # GET /shift_jobs/new
   def new
     @shift_job = ShiftJob.new
+    @shift_job.shift_id = params[:shift_id] unless params[:shift_id].nil?
   end
 
   # GET /shift_jobs/1/edit
@@ -54,7 +55,7 @@ class ShiftJobsController < ApplicationController
   # DELETE /shift_jobs/1
   # DELETE /shift_jobs/1.json
   def destroy
-    @shift_job.delete
+    @shift_job.destroy
     redirect_to shifts_path, notice: "Successfully removed job from the Shift"
   end
 
