@@ -24,6 +24,8 @@ class HomeController < ApplicationController
   def privacy
   end
 
+
+
   def search
       redirect_back(fallback_location: employee_path) if params[:query].blank?
       @query = params[:query]
@@ -33,6 +35,7 @@ class HomeController < ApplicationController
       	redirect_to Employee.search(@query).first
       end
   end
+
 
   def store_calc
 		sd = params[:start_date]
@@ -110,14 +113,19 @@ class HomeController < ApplicationController
 
   def retrieve_employees_at_manager_store
   	  if current_user.current_assignment != nil
-      	@employees_at_manager_store = Employee.for_store(current_user.current_assignment.store_id).active.alphabetical.paginate(page: params[:page]).per_page(10)
+      	@employees_at_manager_store = Employee.for_store(current_user.current_assignment.store_id).active.alphabetical.paginate(page: params[:page]).per_page(6)
       end
   end
 
   def retrieve_employee_shifts
 
       @upcoming_shifts_in_7 = Shift.upcoming.for_next_days(7).by_store.by_employee.for_employee(current_user).paginate(page: params[:page]).per_page(5)
+
+      today_date_range = DateRange.new(Date.today.to_date, Date.tomorrow.to_date)
+      @pending_shifts_for_today = Shift.chronological.for_employee(current_user).for_dates(today_date_range).paginate(page: params[:page]).per_page(8)
       @past_shifts = Shift.past.by_store.by_employee.for_employee(current_user).paginate(page: params[:page]).per_page(5)
+
+
       @completed_shifts = Shift.completed.for_employee(current_user).by_employee.paginate(page: params[:page]).per_page(5)
       @pending_shifts = Shift.pending.for_employee(current_user).by_employee.paginate(page: params[:page]).per_page(5)
       if !current_user.current_assignment.nil?

@@ -25,6 +25,9 @@ class ShiftsController < ApplicationController
       @past_shifts = Shift.past.for_employee(current_user).by_employee.chronological.paginate(page: params[:page]).per_page(8)
       @completed_shifts = Shift.completed.for_employee(current_user).chronological.by_employee.paginate(page: params[:page]).per_page(5)
       @pending_shifts = Shift.pending.for_employee(current_user).chronological.by_employee.paginate(page: params[:page]).per_page(5)
+
+      today_date_range = DateRange.new(Date.today.to_date, Date.tomorrow.to_date)
+      @pending_shifts_for_today = Shift.chronological.for_employee(current_user).for_dates(today_date_range).paginate(page: params[:page]).per_page(5)
     end
 
     # if params[:status] == 'upcoming'

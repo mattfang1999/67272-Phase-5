@@ -111,10 +111,15 @@ h3{
 }
 
 
+/***Collapsible eeleements***/
 .collapsible-header{
   background-color:#4c5b61;
   color:silver;
 }
+
+   .input-field label {
+     color: #000;
+   }
 
 #tabbed h4{
   color:silver;
@@ -222,6 +227,17 @@ th.align_center {
   background-color: #ffea00;
 }
 
+.input-field{
+  color:silver;
+}
+
+.input-field label{
+  color:silver;
+}
+.input-field textarea{
+  color:silver;
+}
+
 input[type=text] {
   color: silver;
 }
@@ -242,6 +258,7 @@ input[type=text] {
 input[type=text].search {
   border-bottom: none;
   margin-left: 10px;
+  color: silver;
 }
 
 .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {

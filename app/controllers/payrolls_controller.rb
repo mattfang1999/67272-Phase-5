@@ -58,6 +58,17 @@ class PayrollsController < ApplicationController
  		Date.strptime(date, "%m/%d/%Y")
 	end
 
+	def emp_payroll_info
+		@calculator = PayrollCalculator.new(DateRange.new(7.days.ago.to_date, Date.current.to_date))  
+     	@seven_days_employee_payroll_record = @calculator.create_payroll_record_for(current_user)
+
+     	@calculator2 = PayrollCalculator.new(DateRange.new(14.days.ago.to_date, Date.current.to_date))  
+     	@half_month_employee_payroll_record = @calculator2.create_payroll_record_for(current_user)
+
+     	@calculator3 = PayrollCalculator.new(DateRange.new(1.month.ago.to_date, Date.current.to_date))  
+     	@monthly_employee_payroll_record = @calculator3.create_payroll_record_for(current_user)
+	end
+
 
 
 end

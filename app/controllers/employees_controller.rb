@@ -9,9 +9,9 @@ class EmployeesController < ApplicationController
     @active_employees = Employee.regulars.active.alphabetical.paginate(page: params[:emp_page]).per_page(10)
     @inactive_employees = Employee.inactive.alphabetical.paginate(page: params[:in_page]).per_page(10)
     elsif current_user.role?(:manager)
-    @active_managers = Employee.for_store(current_user.current_assignment.store_id).managers.active.alphabetical.paginate(page: params[:page]).per_page(10)
-    @active_employees = Employee.regulars.for_store(current_user.current_assignment.store_id).active.alphabetical.paginate(page: params[:page]).per_page(10)
-    @inactive_employees = Employee.for_store(current_user.current_assignment.store_id).inactive.alphabetical.paginate(page: params[:page]).per_page(10)
+    @active_managers = Employee.for_store(current_user.current_assignment.store_id).managers.active.alphabetical.paginate(page: params[:page]).per_page(6)
+    @active_employees = Employee.regulars.for_store(current_user.current_assignment.store_id).active.alphabetical.paginate(page: params[:page]).per_page(6)
+    @inactive_employees = Employee.for_store(current_user.current_assignment.store_id).inactive.alphabetical.paginate(page: params[:page]).per_page(6)
     end
 
     retrieve_employee_payroll

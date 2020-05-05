@@ -38,6 +38,10 @@
           <li><%= link_to 'Payrolls', payroll_info_path %></li>
       <%end%>
 
+      
+
+
+
       <ul id="dropdown2" class="dropdown-content">
 
             <% if current_user.role?(:admin)%>
@@ -56,8 +60,14 @@
           <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Shifts<i class="material-icons right">arrow_drop_down</i></a></li>
      
 
+      <% if current_user.role?(:employee)%>
+          <li><%= link_to 'Payrolls', emp_payroll_info_path %></li>
+      <%end%>
 
     </ul>
+
+
+   
 
 
     <ul class="right">

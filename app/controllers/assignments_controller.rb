@@ -9,8 +9,8 @@ class AssignmentsController < ApplicationController
 
   def index
       if current_user.role? :admin
-        @current_assignments = Assignment.current.by_store.by_employee.chronological.paginate(page: params[:page]).per_page(10)
-        @past_assignments = Assignment.past.by_store.by_employee.chronological.paginate(page: params[:page]).per_page(10)
+        @current_assignments = Assignment.current.by_store.by_employee.chronological.paginate(page: params[:page]).per_page(6)
+        @past_assignments = Assignment.past.by_store.by_employee.chronological.paginate(page: params[:page]).per_page(6)
       else current_user.role? :manager
         @current_assignments = Assignment.current.for_store(current_user.current_assignment.store).by_employee.chronological.paginate(page: params[:page]).per_page(6)
         @past_assignments = Assignment.past.for_store(current_user.current_assignment.store).by_employee.paginate(page: params[:page]).per_page(6)  

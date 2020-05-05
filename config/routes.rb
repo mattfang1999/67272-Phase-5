@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get 'home/about', to: 'home#about', as: :about
   get 'home/contact', to: 'home#contact', as: :contact
   get 'home/privacy', to: 'home#privacy', as: :privacy
+
+
+
   get 'home/search', to: 'home#search', as: :home_search
   get 'employees/search', to: 'employees#search', as: :employee_search
   
@@ -12,6 +15,9 @@ Rails.application.routes.draw do
   get 'payrolls', to: 'payrolls#calculate_stores', as: :calculate_stores
 
   get 'payrolls/info', to: 'payrolls#info', as: :payroll_info
+  get 'payrolls/emp_payroll_info', to: 'payrolls#emp_payroll_info', as: :emp_payroll_info
+
+
 
   # Resource routes (maps HTTP verbs to controller actions automatically):
   resources :employees

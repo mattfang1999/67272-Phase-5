@@ -1,0 +1,19 @@
+
+  <div class="card gray lighten-1">
+    <div class="card-content">
+      <h5>Find your payrolls.</h5>
+    </div>
+    <div class="card-tabs">
+      <ul class="tabs tabs-fixed-width">
+        <li class="tab"><a href="#test5">Past Week</a></li>
+        <li class="tab"><a href="#test6">Past Half Month</a></li>
+        <li class="tab"><a href="#test7">Past Month</a></li>
+      </ul>
+    </div>
+    <div class="card-content gray lighten-4">
+      <div id="test5"><%= render :partial => "detailed_emp_payroll", locals: {payrolls: @seven_days_employee_payroll_record, time_range: 'Week'}%></div>
+      <div id="test6"><%= render :partial => "detailed_emp_payroll", locals: {payrolls: @half_month_employee_payroll_record, time_range: 'Half Month'}%></div>
+      <div id="test7"><%= render :partial => "detailed_emp_payroll", locals: {payrolls: @monthly_employee_payroll_record, time_range: 'Month'}%></div>
+
+    </div>
+  </div>

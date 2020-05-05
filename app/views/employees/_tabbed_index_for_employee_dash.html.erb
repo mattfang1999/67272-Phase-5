@@ -4,17 +4,21 @@
   <div class="row">
     <div class="col s12">
       <ul class="tabs">
+        <li class="tab col s3"><a href="#test3">Today's Shifts</a></li>
       	<li class="tab col s3"><a href="#test1">Upcoming Shifts</a></li>
         <li class="tab col s3"><a href="#test2">All Past Shifts</a></li>
+        
+
         
         
         
       </ul>
     </div>
-    <div id="test1" class="col s12"><%= render :partial => "shifts/special_employee_shift_clock_view", locals: {shifts: @upcoming_shifts_in_7, state: "Upcoming", can_clock: true }%> </div>
+    <div id="test3" class="col s12"><%= render :partial => "shifts/special_employee_shift_clock_view", locals: {shifts: @pending_shifts_for_today, state: "Pending", can_clock: true }%> </div>
+    <div id="test1" class="col s12"><%= render :partial => "shifts/special_employee_shift_clock_view", locals: {shifts: @upcoming_shifts_in_7, state: "Upcoming", can_clock: false }%> </div>
     <div id="test2" class="col s12"><%= render :partial => "shifts/shifts_lists", locals: {shifts: @past_shifts, state: "Past", can_clock: false, is_past: false}%> </div>
 
-    
+ 
 	</div>
 
 
@@ -24,7 +28,9 @@
     
 </div>
 
-<%= link_to(employee_path(current_user), class: 'btn-small yellow darken-1') do %>
+
+
+<%= link_to(employee_path(current_user), class: 'btn-small yellow darken-3') do %>
                         &nbsp;View Employee Information &nbsp;
 
                   <% end %>
