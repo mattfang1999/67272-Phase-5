@@ -50,11 +50,18 @@ class EmployeesController < ApplicationController
     end
   end
 
+
   def destroy
-    @employee.destroy
-    respond_to do |format|
-      format.html { redirect_to employees_url, notice: 'Employee was successfully destroyed.' }
-      format.json { head :no_content }
+
+    if @employee.destroy
+      @employee.destroy
+      respond_to do |format|
+        format.html { redirect_to employees_url, notice: 'Employee was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      @employee.active == false
+      redirect_to @employee, notice: "Cannot destroy an employee who has worked more than one shift. Will be made inactive instead."
     end
   end
 
