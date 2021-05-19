@@ -163,7 +163,9 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2020.0425)
-    mimemagic (0.3.4)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.0)
@@ -183,7 +185,8 @@ GEM
       mini_portile2 (~> 2.4.0)
     populator (1.0.0)
     public_suffix (4.0.4)
-    puma (3.11.0)
+    puma (4.3.8)
+      nio4r (~> 2.0)
     rack (2.2.2)
     rack-contrib (2.2.0)
       rack (~> 2.0)
@@ -321,7 +324,7 @@ DEPENDENCIES
   minitest-rails (= 3.0.0)
   minitest-reporters (= 1.1.19)
   populator
-  puma (= 3.11)
+  puma (= 4.3.8)
   rails
   rails-controller-testing
   sass-rails (~> 5.0)
